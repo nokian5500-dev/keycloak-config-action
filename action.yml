@@ -31,10 +31,10 @@ runs:
   using: 'docker'
   image: 'docker://adorsys/keycloak-config-cli:latest-18.0.0'
   env: 
-    KEYCLOAK_URL: ${{ inputs.url }}
-    KEYCLOAK_USER: ${{ inputs.username }}
-    KEYCLOAK_PASSWORD: ${{ inputs.password }}
-    KEYCLOAK_LOGINREALM: ${{ inputs.login-realm }}
+    KEYCLOAK_URL: 'https://auth.cyberlogitec.com.vn/auth'
+    KEYCLOAK_USER: 'nguyentm'
+    KEYCLOAK_PASSWORD: 'Nguyen720'
+    KEYCLOAK_LOGINREALM: 'CLV'
     IMPORT_FILES_LOCATIONS: ${{ inputs.files }}
     KEYCLOAK_AVAILABILITYCHECK_ENABLED: ${{ inputs.availability-check-enabled }}
     KEYCLOAK_AVAILABILITYCHECK_TIMEOUT: ${{ inputs.availability-check-timeout }}
