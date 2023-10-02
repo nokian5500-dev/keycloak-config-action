@@ -1,0 +1,40 @@
+name: 'Keycloak Realm Configuration'
+description: 'Imports a keycloak realm config'
+inputs:
+  url:  # id of input
+    description: 'URL of a Keycloak server'
+    required: true
+  username:
+    description: 'Username used to import config'
+    required: true
+  password:
+    description: 'Password used to import config'
+    required: true
+  login-realm:
+    description: 'Realm used to log in'
+    required: false
+    default: 'master'
+  files:
+    description: 'Location of config files (URL, file path, or Ant-style pattern)'
+    required: false
+    default: '/config'
+  availability-check-enabled:
+    description: 'Wait until Keycloak is available'
+    required: false
+    default: false
+  availability-check-timeout:
+    description: 'Wait timeout for keycloak availability check'
+    required: false
+    default: '120s'
+    
+runs:
+  using: 'docker'
+  image: 'docker://adorsys/keycloak-config-cli:latest-18.0.0'
+  env: 
+    KEYCLOAK_URL: 'https://auth.cyberlogitec.com.vn/auth'
+    KEYCLOAK_USER: 'nguyentm'
+    KEYCLOAK_PASSWORD: 'Nguyen720'
+    KEYCLOAK_LOGINREALM: 'CLV'
+    IMPORT_FILES_LOCATIONS: ${{ inputs.files }}
+    KEYCLOAK_AVAILABILITYCHECK_ENABLED: ${{ inputs.availability-check-enabled }}
+    KEYCLOAK_AVAILABILITYCHECK_TIMEOUT: ${{ inputs.availability-check-timeout }}
